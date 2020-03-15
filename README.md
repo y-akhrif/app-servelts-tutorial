@@ -1,4 +1,4 @@
-# application for Servelt 4.0 tutortil
+# application for Servelt 4.0 tutortial
 
 To Install and test the application, please follow the steps below:
  - 1- create mySQL database with name userdb
