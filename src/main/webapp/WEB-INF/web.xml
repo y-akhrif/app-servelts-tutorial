@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+   http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+
+   
+  <display-name>Archetype Created Web Application</display-name>
+  <filter>
+  	<filter-name>RequestLoggingFilter</filter-name>
+  	<filter-class>org.appServlet.filters.RequestLoggingFilter</filter-class>
+  </filter>
+  <filter>
+  	<filter-name>AuthenticationFilter</filter-name>
+  	<filter-class>org.appServlet.filters.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>RequestLoggingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthenticationFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <context-param>
+    <param-name>dbURL</param-name>
+    <param-value>jdbc:mysql://localhost/userdb</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbUser</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbUserPwd</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4j-config</param-name>
+    <param-value>WEB-INF/log4j.xml</param-value>
+  </context-param>
+    <listener>
+        <listener-class>org.appServlet.listeners.AppContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.appServlet.listeners.AppContextAttributeListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.appServlet.listeners.AppSessionListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.appServlet.listeners.AppServletRequestListener</listener-class>
+    </listener>
+    
+   <error-page>
+  	<error-code>404</error-code>
+  	<location>/AppExceptionHandler</location>
+  </error-page>
+
+  <error-page>
+    <error-code>405</error-code>
+    <location>/AppExceptionHandler</location>
+  </error-page>
+  
+  <error-page>
+  <exception-type>javax.servlet.ServletException</exception-type>
+  <location>/AppExceptionHandler</location>
+  </error-page>
+  
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+  </welcome-file-list>
+</web-app>
